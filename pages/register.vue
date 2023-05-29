@@ -6,16 +6,23 @@ const http = axios.create({
   baseURL: "http://localhost/api",
 });
 
+const form = ref({
+  first_name: "",
+  last_name: "",
+  email: "",
+  password: "",
+  password_confirmation: "",
+});
+
 const errors = ref([]);
 
 const getErrors = (field) => {
   let result = null;
-  errors.value.forEach((error) => {
-    if (Object.keys(error)[0] === field) {
-      result = error;
-    }
-  });
-  return result !== null ? result[field] : null;
+  result = errors.value.filter((item) => item !== undefined && item[field]);
+  if (result.length > 0) {
+    result = result[0][field];
+  }
+  return result;
 };
 
 const login = (event) => {
@@ -23,7 +30,7 @@ const login = (event) => {
   errors.value = [];
 
   http
-    .post("/auth/register")
+    .post("/auth/register", form.value)
     .then((response) => {
       console.log(response.data);
     })
@@ -62,17 +69,21 @@ const login = (event) => {
             >
             <div class="mt-2">
               <input
+                v-model="form.first_name"
                 id="first_name"
                 name="first_name"
                 type="text"
                 class="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
             </div>
-            <div v-if="getErrors('first_name')" class="text-red-500">
-              <small v-for="(error, index) in getErrors('first_name')" :key="index">
-                {{ error }}
-              </small>
-            </div>
+
+            <small
+              v-for="(error, index) in getErrors('first_name')"
+              :key="index"
+              class="text-red-500"
+            >
+              {{ error }}
+            </small>
           </div>
 
           <div class="w-full">
@@ -83,17 +94,20 @@ const login = (event) => {
             >
             <div class="mt-2">
               <input
+                v-model="form.last_name"
                 id="last_name"
                 name="last_name"
                 type="text"
                 class="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
               />
             </div>
-            <div v-if="getErrors('last_name')" class="text-red-500">
-              <small v-for="(error, index) in getErrors('last_name')" :key="index">
-                {{ error }}
-              </small>
-            </div>
+            <small
+              v-for="(error, index) in getErrors('last_name')"
+              :key="index"
+              class="text-red-500"
+            >
+              {{ error }}
+            </small>
           </div>
         </div>
         <div>
@@ -102,6 +116,7 @@ const login = (event) => {
           >
           <div class="mt-2">
             <input
+              v-model="form.email"
               id="email"
               name="email"
               type="email"
@@ -110,11 +125,13 @@ const login = (event) => {
             />
           </div>
 
-          <div v-if="getErrors('email')" class="text-red-500">
-            <small v-for="(error, index) in getErrors('email')" :key="index">
-              {{ error }}
-            </small>
-          </div>
+          <small
+            v-for="(error, index) in getErrors('email')"
+            :key="index"
+            class="text-red-500"
+          >
+            {{ error }}
+          </small>
         </div>
 
         <div>
@@ -127,6 +144,7 @@ const login = (event) => {
           </div>
           <div class="mt-2">
             <input
+              v-model="form.password"
               id="password"
               name="password"
               type="password"
@@ -135,11 +153,13 @@ const login = (event) => {
             />
           </div>
 
-          <div v-if="getErrors('password')" class="text-red-500">
-            <small v-for="(error, index) in getErrors('password')" :key="index">
-              {{ error }}
-            </small>
-          </div>
+          <small
+            v-for="(error, index) in getErrors('password')"
+            :key="index"
+            class="text-red-500"
+          >
+            {{ error }}
+          </small>
         </div>
 
         <div>
@@ -152,6 +172,7 @@ const login = (event) => {
           </div>
           <div class="mt-2">
             <input
+              v-model="form.password_confirmation"
               id="password_confirmation"
               name="password_confirmation"
               type="password"
@@ -159,14 +180,13 @@ const login = (event) => {
             />
           </div>
 
-          <div v-if="getErrors('password_confirmation')" class="text-red-500">
-            <small
-              v-for="(error, index) in getErrors('password_confirmation')"
-              :key="index"
-            >
-              {{ error }}
-            </small>
-          </div>
+          <small
+            v-for="(error, index) in getErrors('password_confirmation')"
+            :key="index"
+            class="text-red-500"
+          >
+            {{ error }}
+          </small>
         </div>
 
         <div>

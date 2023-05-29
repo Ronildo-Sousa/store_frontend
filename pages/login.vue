@@ -4,11 +4,8 @@ import { useNuxtApp } from "#app";
 const { $axios } = useNuxtApp();
 
 const form = ref({
-  first_name: "",
-  last_name: "",
   email: "",
   password: "",
-  password_confirmation: "",
 });
 
 const formErrors = ref([]);
@@ -23,12 +20,12 @@ const getErrors = (field) => {
   return result;
 };
 
-const register = (event) => {
+const login = (event) => {
   event.preventDefault();
   formErrors.value = [];
 
   $axios()
-    .post("/auth/register", form.value)
+    .post("/auth/login", form.value)
     .then((response) => {
       console.log(response.data);
     })
@@ -57,7 +54,7 @@ const register = (event) => {
       <h2
         class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
       >
-        Sign up to your account
+        Sign in to your account
       </h2>
     </div>
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -68,56 +65,6 @@ const register = (event) => {
         {{ httpErrors }}
       </div>
       <form class="space-y-6" method="POST">
-        <div class="flex justify-between gap-2">
-          <div class="w-full">
-            <label
-              for="first_name"
-              class="block text-sm font-medium leading-6 text-gray-900"
-              >First name</label
-            >
-            <div class="mt-2">
-              <input
-                v-model="form.first_name"
-                id="first_name"
-                name="first_name"
-                type="text"
-                class="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-              />
-            </div>
-
-            <small
-              v-for="(error, index) in getErrors('first_name')"
-              :key="index"
-              class="text-red-500"
-            >
-              {{ error }}
-            </small>
-          </div>
-
-          <div class="w-full">
-            <label
-              for="last_name"
-              class="block text-sm font-medium leading-6 text-gray-900"
-              >Last name</label
-            >
-            <div class="mt-2">
-              <input
-                v-model="form.last_name"
-                id="last_name"
-                name="last_name"
-                type="text"
-                class="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-              />
-            </div>
-            <small
-              v-for="(error, index) in getErrors('last_name')"
-              :key="index"
-              class="text-red-500"
-            >
-              {{ error }}
-            </small>
-          </div>
-        </div>
         <div>
           <label for="email" class="block text-sm font-medium leading-6 text-gray-900"
             >Email address</label
@@ -171,35 +118,8 @@ const register = (event) => {
         </div>
 
         <div>
-          <div class="flex items-center justify-between">
-            <label
-              for="password_confirmation"
-              class="block text-sm font-medium leading-6 text-gray-900"
-              >Password confirmation</label
-            >
-          </div>
-          <div class="mt-2">
-            <input
-              v-model="form.password_confirmation"
-              id="password_confirmation"
-              name="password_confirmation"
-              type="password"
-              class="block w-full pl-2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-            />
-          </div>
-
-          <small
-            v-for="(error, index) in getErrors('password_confirmation')"
-            :key="index"
-            class="text-red-500"
-          >
-            {{ error }}
-          </small>
-        </div>
-
-        <div>
           <button
-            @click="register"
+            @click="login"
             type="submit"
             class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
@@ -209,9 +129,9 @@ const register = (event) => {
       </form>
 
       <p class="mt-10 text-center text-sm text-gray-500">
-        have an account ?
+        don't have an account ?
         <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
-          >Sign in</a
+          >Sign up</a
         >
       </p>
     </div>

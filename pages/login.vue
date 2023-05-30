@@ -27,7 +27,9 @@ const login = (event) => {
   $axios()
     .post("/auth/login", form.value)
     .then((response) => {
-      console.log(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      navigateTo("/dashboard");
     })
     .catch((error) => {
       if (error.response.status === 422) {

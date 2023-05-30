@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import { useNuxtApp } from "#app";
+
 const { $axios } = useNuxtApp();
 
 const form = ref({
@@ -54,7 +55,9 @@ const register = (event) => {
         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
         alt="Your Company"
       />
+
       <h2
+        @click="store.increment()"
         class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
       >
         Sign up to your account
@@ -210,7 +213,9 @@ const register = (event) => {
 
       <p class="mt-10 text-center text-sm text-gray-500">
         have an account ?
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        <a
+          href="/login"
+          class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >Sign in</a
         >
       </p>

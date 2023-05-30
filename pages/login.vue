@@ -130,7 +130,9 @@ const login = (event) => {
 
       <p class="mt-10 text-center text-sm text-gray-500">
         don't have an account ?
-        <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+        <a
+          href="/register"
+          class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
           >Sign up</a
         >
       </p>

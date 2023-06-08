@@ -1,16 +1,14 @@
 <script setup>
-const props = defineProps(["products"]);
+import { computed } from "vue";
+const props = defineProps(["products", "listTitle"]);
+const products = computed(() => props.products.items);
 </script>
 
 <template>
   <div class="mt-5 mb-5">
-    <h3 class="ml-3 text-lg font-semibold">Algum titulo here....</h3>
+    <h3 class="ml-3 text-lg font-semibold" v-if="listTitle">{{ listTitle }}</h3>
     <div class="inline-flex gap-5">
-      <ProductCard
-        v-for="product in products.items"
-        :key="product.slug"
-        :product="product"
-      />
+      <ProductCard v-for="product in products" :key="product.slug" :product="product" />
     </div>
   </div>
 </template>

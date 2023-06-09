@@ -86,8 +86,8 @@
           <!-- toggle cart -->
           <button
             type="button"
-            data-modal-target="defaultModal"
-            data-modal-toggle="defaultModal"
+            data-modal-target="cartmodal"
+            data-modal-toggle="cartmodal"
             class="relative p-2 ml-2 text-xs text-gray-500 rounded dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
           >
             <svg

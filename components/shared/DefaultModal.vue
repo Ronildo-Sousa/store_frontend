@@ -1,13 +1,15 @@
-<script setup></script>
+<script setup>
+const props = defineProps(['modal_id']);
+</script>
 
 <template>
   <div>
     <!-- Main modal -->
     <div
-      id="defaultModal"
+      :id="props.modal_id"
       tabindex="-1"
       aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden bg-gray-700 bg-opacity-70 w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen max-h-full p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-70 md:inset-0"
     >
       <div class="relative w-full max-w-2xl max-h-full">
         <!-- Modal content -->
@@ -21,7 +23,7 @@
             <button
               type="button"
               class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="defaultModal"
+              :data-modal-hide="props.modal_id"
             >
               <svg
                 aria-hidden="true"

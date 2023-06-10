@@ -3,19 +3,13 @@ import {ref} from 'vue'
 import { useUserStore } from '~/store/user';
 const store = useUserStore();
 
-const products = ref(store.cart.items);
-const total = ref(store.cart.total);
-
-store.$subscribe((mutation, state) => {
-    total.value = state.cart.total;
-})
 </script>
 
 <template>
     <SharedDefaultModal :modal_id="'cartmodal'">
         <template #header>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-            Your shopping cart {{ total }}
+            Your shopping cart {{ store.cart }}
           </h3>
         </template>
         <template #body>
@@ -35,7 +29,7 @@ store.$subscribe((mutation, state) => {
                 </tr>
               </thead>
               <tbody>
-                <ProductCartItem v-for="(product, idx) in products" :key="idx" :product="product" />
+                <!-- <ProductCartItem v-for="(product, idx) in products" :key="idx" :product="product" /> -->
               </tbody>
             </table>
           </div>

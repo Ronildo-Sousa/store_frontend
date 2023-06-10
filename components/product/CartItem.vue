@@ -1,17 +1,15 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { useUserStore } from '~/store/user';
 const store = useUserStore();
 const props = defineProps(['product']);
 
 const quantity = ref(props.product.quantity);
-const price = ref(props.product.price);
 
 const incrementQuantity = () => {
-    quantity.value++;
-    store.incrementCartTotal(price.value);
+  quantity.value++;
+  store.incrementCart(props.product.name, quantity.value);
 }
-
 </script>
 
 <template>
@@ -22,7 +20,7 @@ const incrementQuantity = () => {
       <img src="/_nuxt/assets/images/apple-watch.png" alt="Apple Watch" />
     </td>
     <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-      {{ props.product.name }}
+      {{ product.name }}
     </td>
     <td class="px-6 py-4">
       <div class="flex items-center space-x-3">
@@ -76,7 +74,7 @@ const incrementQuantity = () => {
       </div>
     </td>
     <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
-      ${{ props.product.price }}
+      ${{ product.price }}
     </td>
     <td class="px-6 py-4">
       <a

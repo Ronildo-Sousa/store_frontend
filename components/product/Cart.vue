@@ -9,7 +9,7 @@ const store = useUserStore();
     <SharedDefaultModal :modal_id="'cartmodal'">
         <template #header>
           <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-            Your shopping cart {{ store.cart }}
+            Your shopping cart {{ store.cart.total }}
           </h3>
         </template>
         <template #body>
@@ -29,7 +29,7 @@ const store = useUserStore();
                 </tr>
               </thead>
               <tbody>
-                <!-- <ProductCartItem v-for="(product, idx) in products" :key="idx" :product="product" /> -->
+                <ProductCartItem v-for="(product, idx) in store.cart.items" :key="idx" :product="product" />
               </tbody>
             </table>
           </div>

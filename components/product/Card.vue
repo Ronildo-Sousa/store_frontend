@@ -1,27 +1,20 @@
 <script setup>
-import { computed } from "vue";
+import { useUserStore } from '~/store/user';
+const store = useUserStore();
+
 const props = defineProps(["product"]);
-const product = computed(() => props.product);
 const { $axios } = useNuxtApp();
 
-const showProduct = () => {
-  $axios()
-    .get(`/products/${product.value.slug}`)
-    .then((response) => {
-      console.log(response);
-    });
-};
 </script>
 
 <template>
   <div
-    @click="showProduct"
-    class="max-w-sm mt-6 cursor-pointer mb-3 bg-white border border-gray-400 rounded-lg shadow w-80 dark:bg-gray-800 dark:border-gray-700"
+    class="max-w-sm mt-6 mb-3 bg-white border border-gray-400 rounded-lg shadow cursor-pointer w-80 dark:bg-gray-800 dark:border-gray-700"
   >
     <span>
       <img
         class="p-8 rounded-t-lg"
-        src="https://picsum.photos/400/300"
+        src="/_nuxt/assets/images/apple-watch.png"
         alt="product image"
       />
     </span>
@@ -101,11 +94,13 @@ const showProduct = () => {
         <span class="text-3xl font-bold text-gray-900 dark:text-white">
           R${{ product.price }}
         </span>
-        <a
+        <button
+          @click="store.addTocart(product)"
+          type="button"
           href="#"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >Add to cart</a
-        >
+          >Add to cart
+        </button>
       </div>
     </div>
   </div>

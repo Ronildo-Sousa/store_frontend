@@ -1,3 +1,8 @@
+<script setup>
+import { useUserStore } from '~/store/user';
+const store = useUserStore();
+</script>
+
 <template>
   <nav class="bg-white border-gray-200 dark:bg-gray-900">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
@@ -105,8 +110,11 @@
               />
             </svg>
             <span
+            v-if="store.cart.items.length > 0"
               class="absolute right-0 flex items-center justify-center w-1 h-1 p-2 text-xs font-semibold text-white bg-red-500 rounded-full top-1/2"
-              >1</span
+              >
+              {{ store.cart.items.length }}
+              </span
             >
           </button>
         </div>

@@ -1,9 +1,16 @@
 <script setup>
 import { useUserStore } from '~/store/user';
+import { useToastStore } from '~/store/toast';
 const store = useUserStore();
+const toastStore = useToastStore();
 
 const props = defineProps(["product"]);
 const { $axios } = useNuxtApp();
+
+const addToCart = () => {
+  let result = store.addTocart(props.product);
+  toastStore.addToast(result.message, result.type);
+};
 
 </script>
 
@@ -95,7 +102,7 @@ const { $axios } = useNuxtApp();
           R${{ product.price }}
         </span>
         <button
-          @click="store.addTocart(product)"
+          @click="addToCart"
           type="button"
           href="#"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

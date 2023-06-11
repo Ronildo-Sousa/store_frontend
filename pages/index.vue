@@ -24,6 +24,7 @@ onMounted(() => {
 <template>
   <NuxtLayout>
     <div class="p-5 dark:bg-gray-700 dark:text-white">
+      <SharedToastList />
       <ProductCart />
       <ProductList
         v-for="item in products"

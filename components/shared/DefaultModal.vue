@@ -9,11 +9,11 @@ const props = defineProps(['modal_id']);
       :id="modal_id"
       tabindex="-1"
       aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen max-h-full p-4 overflow-x-hidden overflow-y-auto bg-gray-700 bg-opacity-70 md:inset-0"
+      class="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen max-h-full p-4 overflow-hidden bg-gray-700 bg-opacity-70 md:inset-0"
     >
-      <div class="relative w-full max-w-2xl max-h-full">
+      <div class="relative w-full max-w-2xl overflow-hidden bg-red-400">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div class="relative max-h-full bg-white rounded-lg shadow-lg dark:bg-gray-800">
           <!-- Modal header -->
           <div
             class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"

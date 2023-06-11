@@ -6,7 +6,7 @@ export const useUserStore = defineStore('user', () => {
 
     const addTocart = (product) => {
         if (productExists(product.name)) {
-            return
+            return {message: 'Product already added', type: 'error'};
         }
         cart.value.items.push({
             name: product.name,
@@ -15,6 +15,8 @@ export const useUserStore = defineStore('user', () => {
             image: product.images[0],
         });
         cart.value.total += product.price;
+
+        return {message: 'Product added to cart', type: 'success'}
     };
 
     const productExists = (product_name) => {

@@ -11,9 +11,9 @@ const props = defineProps(['modal_id']);
       aria-hidden="true"
       class="fixed top-0 left-0 right-0 z-50 hidden w-full h-screen max-h-full p-4 overflow-hidden bg-gray-700 bg-opacity-70 md:inset-0"
     >
-      <div class="relative w-full max-w-2xl overflow-hidden bg-red-400">
+      <div class="relative w-full max-w-2xl">
         <!-- Modal content -->
-        <div class="relative max-h-full bg-white rounded-lg shadow-lg dark:bg-gray-800">
+        <div class="relative max-h-full bg-white rounded-lg shadow-lg h-[75vh] flex flex-col justify-between dark:bg-gray-800">
           <!-- Modal header -->
           <div
             class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
@@ -43,7 +43,7 @@ const props = defineProps(['modal_id']);
           </div>
 
           <!-- Modal body -->
-          <div class="p-6 space-y-6">
+          <div class="max-h-full p-6 space-y-6 overflow-x-hidden overflow-y-scroll h-96">
             <slot name="body"></slot>
           </div>
 

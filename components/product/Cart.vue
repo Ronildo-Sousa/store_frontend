@@ -16,30 +16,27 @@ const store = useUserStore();
         v-if="store.cart.items.length > 0"
         class="relative overflow-x-auto shadow-md sm:rounded-lg"
       >
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead
-            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+        <div
+          class="w-full max-h-full overflow-hidden text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <div
+            class="flex justify-between text-xs font-semibold text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
           >
-            <tr>
-              <th scope="col" class="px-6 py-3">
-                <span class="sr-only">Image</span>
-              </th>
-              <th scope="col" class="px-6 py-3">Product</th>
-              <th scope="col" class="px-6 py-3">Qty</th>
-              <th scope="col" class="px-6 py-3">Price</th>
-              <th scope="col" class="px-6 py-3">Action</th>
-            </tr>
-          </thead>
-          <tbody>
+            <div class="py-3">
+              <span class="sr-only">Image</span>
+            </div>
+            <div>Product</div>
+            <div>Qty</div>
+            <div>Price</div>
+            <div class="pr-3">Action</div>
+          </div>
+          <div>
             <ProductCartItem
               v-for="(product, idx) in store.cart.items"
               :key="idx"
               :product="product"
             />
-          </tbody>
-        </table>
-        <div class="flex justify-end p-3">
-          <p class="font-semibold text-md">Total: ${{ store.cart.total }}</p>
+          </div>
         </div>
       </div>
       <div
@@ -51,6 +48,7 @@ const store = useUserStore();
       </div>
     </template>
     <template v-if="store.cart.items.length > 0" #footer>
+      <div class="flex justify-between w-full">
       <button
         data-modal-hide="cartmodal"
         type="button"
@@ -58,6 +56,8 @@ const store = useUserStore();
       >
         Checkout
       </button>
+      <p class="mr-5 text-lg font-semibold">Subtotal: ${{ store.cart.total }}</p>
+    </div>
     </template>
   </SharedDefaultModal>
 </template>

@@ -7,7 +7,7 @@ const props = defineProps(["modal_id"]);
     :id="modal_id"
     data-modal-backdrop="static" 
     tabindex="-1"
-    class="fixed top-0 bg-gray-700 bg-opacity-70 left-0 right-0 z-[60] hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+    class="fixed top-0 bg-gray-900 bg-opacity-70 left-0 right-0 z-[60] hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
   >
     <div class="relative w-full max-w-md max-h-full">
       <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">

@@ -7,7 +7,7 @@ onMounted(() => {
   initFlowbite();
   $darkmodeConfig();
   let modal = new Modal(document.getElementById("cartmodal"));
-  // modal.show();
+  modal.show();
 });
 </script>
 

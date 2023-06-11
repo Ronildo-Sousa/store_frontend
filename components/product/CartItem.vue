@@ -2,7 +2,10 @@
 import { ref, watch } from "vue";
 import { Modal } from "flowbite";
 import { useUserStore } from "~/store/user";
+import { useToastStore } from "~/store/toast";
 const store = useUserStore();
+const toastStore = useToastStore();
+
 const props = defineProps(["product"]);
 
 const quantity = ref(props.product.quantity);
@@ -32,16 +35,16 @@ const removeFromCart = () => {
 </script>
 
 <template>
-  <tr
-    class="bg-white border-b-4 cursor-pointer dark:bg-gray-700 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+  <div
+    class="flex items-center bg-white border-b-4 cursor-pointer dark:bg-gray-700 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
   >
-    <td class="w-32 p-4">
+    <div class="w-32 p-4">
       <img src="/_nuxt/assets/images/apple-watch.png" alt="Apple Watch" />
-    </td>
-    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+    </div>
+    <div class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
       {{ product.name }}
-    </td>
-    <td class="px-6 py-4">
+    </div>
+    <div class="px-6 py-4">
       <div class="flex items-center space-x-3">
         <button
           @click="decrementQuantity"
@@ -93,11 +96,11 @@ const removeFromCart = () => {
           </svg>
         </button>
       </div>
-    </td>
-    <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+    </div>
+    <div class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
       ${{ product.price }}
-    </td>
-    <td class="px-6 py-4">
+    </div>
+    <div class="px-6 py-4">
       <SharedPopUpModal :modal_id="'removeFromCart'">
         <template #content>
           <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
@@ -129,6 +132,6 @@ const removeFromCart = () => {
       >
         Remove
       </button>
-    </td>
-  </tr>
+    </div>
+  </div>
 </template>

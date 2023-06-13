@@ -1,10 +1,10 @@
 <script setup>
-import { useUserStore } from '~/store/user';
+import { useUserStore } from "~/store/user";
 const store = useUserStore();
 </script>
 
 <template>
-  <nav class="bg-white border-gray-200 dark:bg-gray-900">
+  <nav class="fixed top-0 right-0 left-0 bg-white border-gray-200 dark:bg-gray-900">
     <div class="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
       <a href="https://flowbite.com/" class="flex items-center">
         <img
@@ -110,12 +110,11 @@ const store = useUserStore();
               />
             </svg>
             <span
-            v-if="store.cart.items.length > 0"
+              v-if="store.cart.items.length > 0"
               class="absolute right-0 flex items-center justify-center w-1 h-1 p-2 text-xs font-semibold text-white bg-red-500 rounded-full top-1/2"
-              >
-              {{ store.cart.items.length }}
-              </span
             >
+              {{ store.cart.items.length }}
+            </span>
           </button>
         </div>
         <div id="dark-toggle" class="flex ml-2 item-center">

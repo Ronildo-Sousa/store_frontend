@@ -7,13 +7,18 @@ onMounted(() => {
   initFlowbite();
   $darkmodeConfig();
   let modal = new Modal(document.getElementById("cartmodal"));
-  modal.show();
+  // modal.show();
 });
 </script>
 
 <template>
-  <div>
+  <div class="dark:bg-gray-900 dark:text-white">
     <Navbar />
-    <slot />
+    <SharedToastList />
+    <ProductCart />
+    <main>
+      <slot />
+    </main>
+    <SharedFooter />
   </div>
 </template>

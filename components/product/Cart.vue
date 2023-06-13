@@ -49,15 +49,17 @@ const store = useUserStore();
     </template>
     <template v-if="store.cart.items.length > 0" #footer>
       <div class="flex justify-between w-full">
-      <button
-        data-modal-hide="cartmodal"
-        type="button"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-      >
-        Checkout
-      </button>
-      <p class="mr-5 text-lg font-semibold">Subtotal: ${{ store.cart.total }}</p>
-    </div>
+        <button
+          data-modal-hide="cartmodal"
+          type="button"
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Checkout
+        </button>
+        <p class="mr-5 text-lg dark:text-white font-semibold">
+          Subtotal: ${{ store.cart.total }}
+        </p>
+      </div>
     </template>
   </SharedDefaultModal>
 </template>

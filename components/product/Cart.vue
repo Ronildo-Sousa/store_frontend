@@ -33,7 +33,7 @@ const store = useUserStore();
           <div>
             <ProductCartItem
               v-for="(product, idx) in store.cart.items"
-              :key="idx"
+              :key="product.name + idx"
               :product="product"
             />
           </div>
@@ -56,7 +56,7 @@ const store = useUserStore();
         >
           Checkout
         </button>
-        <p class="mr-5 text-lg dark:text-white font-semibold">
+        <p class="mr-5 text-lg font-semibold dark:text-white">
           Subtotal: ${{ store.cart.total }}
         </p>
       </div>

@@ -4,9 +4,9 @@ const props = defineProps(["modal_id"]);
 
 <template>
   <div
-    :id="modal_id"
-    data-modal-backdrop="static" 
+    :id="modal_id" 
     tabindex="-1"
+    aria-hidden="true"
     class="fixed top-0 bg-gray-900 bg-opacity-70 left-0 right-0 z-[60] hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
   >
     <div class="relative w-full max-w-md max-h-full">

@@ -16,7 +16,7 @@ const addToCart = () => {
 
 <template>
   <div
-    class="max-w-sm mt-6 mb-3 bg-white border border-gray-400 rounded-lg shadow cursor-pointer w-80 dark:bg-gray-800 dark:border-gray-700"
+    class="max-w-sm mt-6 mb-3 bg-white border border-gray-400 rounded-lg shadow cursor-pointer w-72 dark:bg-gray-800 dark:border-gray-700"
   >
     <span>
       <img
@@ -98,7 +98,7 @@ const addToCart = () => {
         >
       </div>
       <div class="flex items-center justify-between">
-        <span class="text-3xl font-bold text-gray-900 dark:text-white">
+        <span class="text-2xl font-bold text-gray-900 dark:text-white">
           R${{ product.price }}
         </span>
         <button

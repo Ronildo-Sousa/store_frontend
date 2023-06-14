@@ -30,7 +30,7 @@ const handleRight = () => {
     <div
       @click="handleLeft"
       :class="listIsHover ? 'opacity-100' : 'opacity-0'"
-      class="absolute left-0 p-4 transition-all ease-in-out bg-black rounded-full cursor-pointer hover:bg-indigo-800 top-1/2"
+      class="absolute left-0 p-4 transition-all ease-in-out bg-gray-400 rounded-full cursor-pointer hover:bg-gray-500 dark:bg-black dark:hover:bg-indigo-800 top-1/2"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ const handleRight = () => {
     <div
       @click="handleRight"
       :class="listIsHover ? 'opacity-100' : 'opacity-0'"
-      class="absolute right-0 p-4 transition-all ease-in-out bg-black rounded-full cursor-pointer hover:bg-indigo-800 top-1/2"
+      class="absolute right-0 p-4 transition-all ease-in-out bg-gray-400 rounded-full cursor-pointer hover:bg-gray-500 dark:bg-black dark:hover:bg-indigo-800 top-1/2"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

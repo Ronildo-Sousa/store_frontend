@@ -2,8 +2,9 @@
 import { onMounted, ref } from "vue";
 const { $axios } = useNuxtApp();
 
-const categories = ref({ items: null });
-const products = ref([]);
+const products = ref({
+  items: [],
+});
 const FeaturedProducts = ref([]);
 
 onMounted(() => {
@@ -15,18 +16,12 @@ onMounted(() => {
         items: response.data.data,
       });
     });
-  // $axios()
-  //   .get("/categories")
-  //   .then((response) => {
-  //     categories.value.items = response.data.data;
-  //     categories.value.items.forEach((category) => {
-  //       $axios()
-  //         .get(`/products/?from_categories[]=${category.slug}`)
-  //         .then((response) => {
-  //           products.value.push({ category: category.name, items: response.data.data });
-  //         });
-  //     });
-  //   });
+
+  $axios()
+    .get(`/products?per_page=20`)
+    .then((response) => {
+      products.value.items = response.data.data;
+    });
 });
 </script>
 
@@ -45,12 +40,12 @@ onMounted(() => {
         :products="item"
         :list-title="item.category"
       />
-      <!-- <ProductList
-        v-for="item in products"
-        :key="item.category"
-        :products="item"
-        :list-title="item.category"
-      /> -->
+      <div class="p-3">
+        <h3 class="ml-3 text-lg font-semibold">All Products</h3>
+        <div class="flex flex-wrap items-center justify-around ">
+          <ProductCard v-for="item in products.items" :key="item.slug" :product="item" />
+        </div>
+      </div>
     </div>
   </NuxtLayout>
 </template>

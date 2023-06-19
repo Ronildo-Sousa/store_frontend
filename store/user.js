@@ -4,14 +4,14 @@ import { defineStore } from 'pinia';
 export const useUserStore = defineStore('user', () => {
     const cart = ref({ total: 0, items: [] });
 
-    const addTocart = (product) => {
+    const addTocart = (product, quantity = 1) => {
         if (productExists(product.name)) {
             return {message: 'Product already added', type: 'error'};
         }
         cart.value.items.push({
             name: product.name,
             price: product.price,
-            quantity: 1,
+            quantity: quantity,
             image: product.images[0],
         });
         cart.value.total += product.price;
